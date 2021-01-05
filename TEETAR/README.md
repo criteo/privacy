@@ -49,17 +49,21 @@ During the "cohorts" module test, we propose to first evaluate the metrics defin
 
 Once a baseline has been established for the "plain vanilla" cohorts mechanism, further testing could be done on suggested enhancements like:
 
-The ability to combine cohorts data, for supporting use cases other than retargeting (as suggested in [Interet groups audience new building blocks](https://github.com/WICG/sparrow/blob/master/Interest_groups_audiences_new_building_blocks.md)).
-The ability to include user-level signals in bidding (as suggested in [Outcome-based TURTLEDOVE](https://github.com/WICG/turtledove/blob/master/OUTCOME_BASED.md)). 
-Etc.
+- The ability to combine cohorts data, for supporting use cases other than retargeting (as suggested in [Interet groups audience new building blocks](https://github.com/WICG/sparrow/blob/master/Interest_groups_audiences_new_building_blocks.md)).
+- The ability to include user-level signals in bidding (as suggested in [Outcome-based TURTLEDOVE](https://github.com/WICG/turtledove/blob/master/OUTCOME_BASED.md)). 
+- Etc.
+
 When analyzing the results of the test, interesting projection dimensions would be:
 
-The "size" of the publisher, defined in monthly unique visitors
-The "size" of the advertiser, defined in monthly unique visitors
+- The "size" of the publisher, defined in monthly unique visitors
+- The "size" of the advertiser, defined in monthly unique visitors
 
 ### The technical setup for "cohorts" module testing
+
 #### Fair participation
-We believe that all test participants have a clear incentive to emulate as fairly as possible the cohort environment of the Privacy Sandbox. Thus, it is taken as granted in the rest of this document that DSPs won't take advantage of the lack of rules technical enforcement (knowing that they will be indeed enforced in the future implementation of the Privacy Sandbox) for the duration of the test.
+We believe that all test participants have a clear incentive to emulate as fairly as possible the cohort environment of the Privacy Sandbox. 
+
+Thus, it is taken as granted in the rest of this document that participants (DSPs and others) won't take advantage of the test's lack of enforcement of privacy rules (knowing that they will be indeed enforced in the future implementation of the Privacy Sandbox) for the duration of the test.
 
 #### Required properties
 
@@ -84,9 +88,13 @@ All other advertising process steps (bidding service location, ad generation loc
 #### Technical setup
 We propose the following technical setup:
 
-- One large exchange would be responsible to define a users population split
+- One large Exchange would be responsible to define a users population split
 - Several DSPs would participate in the test
 - Each DSP would manage their users' Interest Groups internally
+
+- For a test population "size=X cohorts"
+  - DSPs should put each user in one or more Interest Groups according to the user buying intents
+  - An Interest Group can be used for bidding and ad selection only when X users or more belong to it
 
 This translates into:
 
