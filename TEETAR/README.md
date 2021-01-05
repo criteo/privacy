@@ -107,6 +107,8 @@ This translates into:
 
 Reporting and attribution are still based on user-level data. 
 
+![](./TEETAR_diagram_1.0.png)
+
  
 #### Additional considerations
 
