@@ -1,7 +1,7 @@
 # TEETAR: Testing Environment Enabling Truthful and Actionable Results 
 (or: *Testing Cohorts in a Live Environment*)
 
-
+![](./Grey_Francolin.jpg)
 
 Photo Credit: Rakesh Kumar Dogra - Licensed under Creative Commons https://commons.wikimedia.org/wiki/File:Grey_Francolin.jpg
 
