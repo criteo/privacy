@@ -49,7 +49,7 @@ During the "cohorts" module test, we propose to first evaluate the metrics defin
 
 Once a baseline has been established for the "plain vanilla" cohorts mechanism, further testing could be done on suggested enhancements like:
 
-- The ability to combine cohorts data, for supporting use cases other than retargeting (as suggested in [Interet groups audience new building blocks](https://github.com/WICG/sparrow/blob/master/Interest_groups_audiences_new_building_blocks.md)).
+- The ability to combine cohorts data, for supporting use cases other than retargeting (as suggested in [Interest groups audience new building blocks](https://github.com/WICG/sparrow/blob/master/Interest_groups_audiences_new_building_blocks.md)).
 - The ability to include user-level signals in bidding (as suggested in [Outcome-based TURTLEDOVE](https://github.com/WICG/turtledove/blob/master/OUTCOME_BASED.md)). 
 - Etc.
 
@@ -92,7 +92,7 @@ We propose the following technical setup:
 - Several DSPs would participate in the test
 - Each DSP would manage their users' Interest Groups internally
 
-- For a test population "size=X cohorts"
+- For a test population "min_cohort_size = X"
   - DSPs should put each user in one or more Interest Groups according to the user buying intents
   - An Interest Group can be used for bidding and ad selection only when X users or more belong to it
 
@@ -100,12 +100,12 @@ This translates into:
 
 1. The Exchange splits the users into several distinct random populations:
    1. A reference population
-   2. A "size=N cohorts" population
-   3. A "size=M cohorts" population
+   2. A "min_cohort_size = N" population
+   3. A "min_cohort_size = M" population
    4. etc.
-2. When a test user visits an advertiser website, the DSP collecting advertiser events can internally add this user to one or more pre-defined Interest Groups.
-   1. A user population can be learned through bid request signals (see below).
-3. At bid request time, for test users, the Exchange sends the same signal "cohorts size=X", alongside the user id (3rd party cookie id).
+2. When a user in test visits an advertiser website, the DSP collecting advertiser events can internally add this user to one or more pre-defined Interest Groups.
+   1. The DSP can know if a user belongs to the test population based on the past bid requests for this user (Cf. 3).
+3. At bid request time, for test users, the Exchange sends the same signal "min_cohort_size = X", alongside the user id (3rd party cookie id).
 4. Each participating DSP shall then:
    1. Retrieve the Interest Groups with more than X users this user belongs to.
    2. Compute a bid value based on one of these Interest Group data, if any, alongside with contextual data, but **without using any user-level data**.
@@ -120,18 +120,18 @@ Reporting and attribution are still based on user-level data.
  
 #### Additional considerations
 
-- Although each DSP sees the full list of Interest Groups a user belongs to, each Interest Group should be used independently of the others for bidding, product recommendation, and ad layout computation.
+- Although each DSP has access to the full list of Interest Groups it added the user to, each Interest Group should be used independently of the others for bidding, product recommendation, and ad layout computation.
 - DSPs not participating in the test shall not send user-level bids for users in test populations. We recommend in that case that the Exchange sends 'contextual' bid requests (without usual user id field) to these DSPs.
 - The Exchange shall encourage as much as possible multiples DSPs to send interest-based bids for a large majority of the auctions on test users. 
   - Indeed, if there is only one or a couple of Interest Group bids in these auctions, there will be no competition, and models will automatically learn to reduce the bid value.
   - That would not be a fair representation of the target state, where all DSPs have switched to an Interest Group bidding mode. 
-  - To assess whether the test was indeed a fair representation of the target state, the Exchange should report on the level of competition in auctions for each DSP. 
+  - To assess whether the test was indeed a fair representation of the target state, the Exchange should report on the level of competition in the auctions. 
 - The above mechanism should be adjusted when the auction includes several steps (e.g. header bidding).
 - Interest group data is sent in the bid response to the Exchange for analytics purposes.
 
 ### User engagement
 
-For users in test or reference populations, on the ads sold through the Exchange by participating DSPs, we propose to measure user engagement by:
+For users in the test populations and for users in the reference population, in ads sold through the Exchange by participating DSPs, we propose to measure user engagement by:
 
 - Running random in-ad surveys, e.g. "what's your feeling about this ad? positive, neutral, negative.", and computing a Net Promoter Score
 - Comparing the rate of "close this ad" actions, and the answers given to "why close this ad?".
@@ -143,4 +143,4 @@ Note that users in the test populations will only be exposed to contextual or In
 - Arnaud Blanchard a.blanchard@criteo.com
 - Paul Marcilhacy p.marcilhacy@criteo.com
 - Basile Leparmentier b.leparmentier@criteo.com
-- Lionel Basdevant l.basdevant@criteo.com 
+- Lionel Basdevant l.basdevant@criteo.com
