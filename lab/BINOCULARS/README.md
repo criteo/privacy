@@ -12,6 +12,22 @@ Reporting is a key aspect of any full-fledged proposal as the detailed reporting
 
 Any proposal that does not allow joint use, and reporting of, publisher information along with the interest group is, by design, flawed and will lead to extremely limited adoption from the users, advertisers and publishers. B.I.N.O.C.U.L.A.R.S. - while taking many elements from Reporting in SPARROW - aims at laying out an independent reporting module that could be adopted to "watch" several birds in the aviary/proposals discussed at the W3C. Its objective is to prevent any possible association between end-user PII - some being available on publisher side - and interest groups, whilst providing the best possible support for the variety of essential reporting use-cases.
 
+# Table of content
+[Three reports](#3-reports-covering-all-usual-measurement-use-cases-while-preserving-full-privacy)
+
+  * [Aggregated report](#aggregated-report)
+  * [Report on ads served](#report-on-ads-served)
+  * [Ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report)
+
+[AB testing and lift measurement](#ab-testing-lift-measurement-and-private-unique-id-count-for-k-anonymity-reporting-computation)
+
+  * [Opportunity-level AB-testing](#opportunity-level-ab-testing)
+  * [User-level AB-testing](#user-level-ab-testing)
+  * [Lift measurement](#lift-measurement)
+  * [Improved k-anonymity computation](#improved-k-anonymity-computation)
+
+[Appendix](#appendix)
+
 # Executive Summary
 
 Reporting relies on a combination of aggregated and [k-anonymous]((https://en.wikipedia.org/wiki/K-anonymity)) granular reports, computed and secured from a user privacy standpoint by the trusted third-party server. There are four different reports:
