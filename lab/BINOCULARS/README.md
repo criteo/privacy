@@ -298,9 +298,9 @@ For this part, we built upon the 2 proposals for private lift measurement by Fac
 
 #### Displaying Ads
 - The advertiser (the trusted third party) provides 2 ads: an ad to show to people in the “test group”, and a “fallback ad” to show to people in the control group. The fallback ad can be either a PSA or PSA-like ad or the second choice in the auction).
-The first ad contains the ratio *testGroupPercentage* of users in the treated population (who see ads), a hash function. and an optional SCOPE, based on the contextual signal.
+The first ad contains the ratio *testGroupPercentage* of users in the treated population (who see ads), a hash function and an optional SCOPE, based on the contextual signal.
 - The first time the browser needs to make a test/control decision about ads being shown by a given advertiser, it just needs to generate (and store) a random identifier: *advertiser_specific_random_id*. This same identifier will be retrieved by the browser from storage and used on all subsequent test/control decisions made in that browser for ads served by the same advertiser.
-- Decision :
+- Decision:
 	`is_test = IF(contextual_signal IN SCOPE custom_hash_function(advertiser_specific_random_id, IG) % 100 < testGroupPercentage) ELSE TRUE END`
 - When such a decision occurs for an advertiser, we say that an opportunity occurred, whether the ad was eventually printed or not.
 
