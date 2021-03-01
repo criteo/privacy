@@ -18,7 +18,7 @@ Any proposal that does not allow joint use, and reporting of, publisher informat
   * [Aggregated report](#aggregated-report)
   * [Report on ads served](#report-on-ads-served)
   * [Ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report)
-  * [Regarding sale attribution](#regarding-sale-attribution)
+  * [Regarding conversion attribution](#regarding-conversion-attribution)
 
 [AB testing and lift measurement](#ab-testing-lift-measurement-and-private-unique-id-count-for-k-anonymity-reporting-computation)
 
