@@ -18,6 +18,7 @@ Any proposal that does not allow joint use, and reporting of, publisher informat
   * [Aggregated report](#aggregated-report)
   * [Report on ads served](#report-on-ads-served)
   * [Ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report)
+  * [Regarding sale attribution](#regarding-sale-attribution)
 
 [AB testing and lift measurement](#ab-testing-lift-measurement-and-private-unique-id-count-for-k-anonymity-reporting-computation)
 
@@ -180,6 +181,7 @@ Finally, it avoids hiding useful information to the advertiser/publisher that ca
 Sale attribution to clicks is not covered by all the previous logs. This is due to the fact that the log retention time of the gatekeeper, which should be of a couple of days, is smaller than common attribution windows. Sale attribution can be done in BINOCULARS in two ways:
 - Link decoration: to keep the k-anonymity of the granular report, only a click id should be allowed for link decoration.
 - Attribution done in browser: similar to [PCM](https://github.com/privacycg/private-click-measurement) or the [lift measurement](#lift-measurement) proposal of this document. The browser would keep a trace of all clicks, and do attribution. Reporting happens with some random delay after the sale to prevent timing attacks.
+
 An industry-wide consensus has yet to form to decide which of the two solutions is an acceptable trade-off betweeen usability for all parties, user privacy and implicit consent. 
 
 # AB testing, lift measurement and private unique id count for K-anonymity reporting computation
