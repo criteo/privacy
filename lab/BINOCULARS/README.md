@@ -18,7 +18,7 @@ Any proposal that does not allow joint use, and reporting of, publisher informat
   * [Aggregated report](#aggregated-report)
   * [Report on ads served](#report-on-ads-served)
   * [Ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report)
-  * [Optional granular report on lost opportunities](#toto)
+  * [Optional granular report on lost opportunities](#optional-granular-report-on-lost-opportunities)
   * [Regarding conversion attribution](#regarding-conversion-attribution)
 
 [AB testing and lift measurement](#ab-testing-lift-measurement-and-private-unique-id-count-for-k-anonymity-reporting-computation)
@@ -179,8 +179,8 @@ Finally, it avoids hiding useful information to the advertiser/publisher that ca
 
 ## Optional granular report on lost opportunities
 
-The [ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report) only covers won auctions. To enable more transparency in the auction process, we propose to add a report on lost auctions for the advertisers. The report would have exactly the same features as the advertisers asked in the granular report, with only a few unprotected variables (eg interest group and AB-test id). The exact form of the report is open to suggestion, though we propose for now a k-anonymous report aggregated over the categories. Reported variables would be the average auction clearing price, with added differential privacy.
-As the number of lost opportunities is much greater than the won ones, we propose to increase the k-anonymity requirement by a large factor to decrease privacy loss.
+The [ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report) only covers won auctions. To enable more transparency in the auction process, we propose to add a report on lost auctions for the advertisers. The report would have exactly the same features as the advertisers asked in the granular report, with only a few unprotected variables (eg interest group and AB-test id). The exact form of the report is open to suggestion, though we propose for now a report aggregated over the features asked. Reported variables would be the number of lost auctions, along with statistics regarding auction clearing price (ie mean and variance), with added differential privacy. The k-anonymity requirement should be kept, so as to avoid privacy attack from advertiser on lost auctions by asking for many features in the granular report (where most of them would be hidden, though not in the report on lost opportunities). As the number of lost auctions is very high compared to won ones, the k-anonymity threshold may have to be increased.
+
 
 ## Regarding conversion attribution
 
