@@ -176,11 +176,11 @@ This also allows for and encourages the advertiser/publisher to find the right t
 
 Finally, it avoids hiding useful information to the advertiser/publisher that cannot be used to identify users anyway.
 
-## Regarding sale attribution
+## Regarding conversion attribution
 
-Sale attribution to clicks is not covered by all the previous logs. This is due to the fact that the log retention time of the gatekeeper, which should be of a couple of days, is smaller than common attribution windows. Sale attribution can be done in BINOCULARS in two ways:
-- Link decoration: to keep the k-anonymity of the granular report, only a click id should be allowed for link decoration.
-- Attribution done in browser: similar to [PCM](https://github.com/privacycg/private-click-measurement) or the [lift measurement](#lift-measurement) proposal of this document. The browser would keep a trace of all clicks, and do attribution. Reporting happens with some random delay after the sale to prevent timing attacks.
+Conversion attribution to clicks is not covered by all the previous logs. This is due to the fact that the trusted third-party server does not have access to conversion events. Conversion attribution can be done in BINOCULARS in two ways:
+- Link decoration: a click id is added as a decoration to the link, enabling the advertiser to link a subsequent conversion (if any) to the click. Only a click id should be allowed for link decoration, otherwise the k-anonymity of the granular report could be compromised (eg decorating the link with all features asked in  advertiser k-anonymous granular report might reveal hidden features of this particular display).
+- Attribution done in browser: similar to [PCM](https://github.com/privacycg/private-click-measurement) or the [lift measurement](#lift-measurement) proposal of this document. The browser would keep a trace of all clicks and conversion, and do attribution. Reporting happens with some random delay after the sale to prevent timing attacks.
 
 An industry-wide consensus has yet to form to decide which of the two solutions is an acceptable trade-off betweeen usability for all parties, user privacy and implicit consent. 
 
