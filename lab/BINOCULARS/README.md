@@ -18,6 +18,8 @@ Any proposal that does not allow joint use, and reporting of, publisher informat
   * [Aggregated report](#aggregated-report)
   * [Report on ads served](#report-on-ads-served)
   * [Ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report)
+  * [Optional granular report on lost opportunities](#optional-granular-report-on-lost-opportunities)
+  * [Regarding conversion attribution](#regarding-conversion-attribution)
 
 [AB testing and lift measurement](#ab-testing-lift-measurement-and-private-unique-id-count-for-k-anonymity-reporting-computation)
 
@@ -174,6 +176,22 @@ This report allows for great flexibility, as it empowers actors to rank the feat
 This also allows for and encourages the advertiser/publisher to find the right tradeoff between latency and precision (the longer the aggregation period is, the more granular the report would be).
 
 Finally, it avoids hiding useful information to the advertiser/publisher that cannot be used to identify users anyway.
+
+## Optional granular report on lost opportunities
+
+The [ranked-privacy preserving granular report](#ranked-privacy-preserving-granular-report) only covers won auctions (ie displays). To enable more transparency in the auction process, we propose to add a report on lost auctions for the advertisers. The report would have exactly the same features as the advertisers asked in the granular report, with only a few unprotected variables (e.g. interest group and AB-test id).
+We propose an **aggregated** report over the requested features. Reported variables would be the number of lost auctions, along with statistics regarding auction clearing price (ie mean and variance), with added differential privacy on these variables. The k-anonymity requirement should be kept, so as to avoid privacy attack from advertiser.
+Otherwise, a simple attack could be the following: the advertiser asks for many features in the granular report. Most of them would be hidden in the k-anonymous granular report but not in the "lost opportunities report", where the advertiser would be able to learn the modalities because of the sheer number of lost opportunities.
+As the number of lost auctions is very high compared to won ones, the k-anonymity threshold may have to be increased.
+
+
+## Regarding conversion attribution
+
+Conversion attribution to clicks is not covered by all the previous logs. This is due to the fact that the trusted third-party server does not have access to conversion events. Conversion attribution can be done in BINOCULARS in two ways:
+- Link decoration: a click id is added as a decoration to the link, enabling the advertiser to link a subsequent conversion (if any) to the click. Note that only a click id is needed to attribute the conversion.
+- Attribution done in browser: similar to [PCM](https://github.com/privacycg/private-click-measurement) or the [lift measurement](#lift-measurement) proposal of this document. The browser would keep a trace of all clicks and conversion, and do attribution. Reporting happens with some random delay after the sale to prevent timing attacks.
+
+An industry-wide consensus has yet to form to decide which of the two solutions is an acceptable trade-off betweeen usability for all parties, user privacy and implicit consent. 
 
 # AB testing, lift measurement and private unique id count for K-anonymity reporting computation
 

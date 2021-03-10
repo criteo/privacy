@@ -5,3 +5,4 @@ Teams across Criteo are actively engaged in industry dialog about new technologi
 ## Proposals
 
 - [TEETAR: Testing Environment Enabling Truthful and Actionable Results](./TEETAR/README.md)
+- [BINOCULARS: a measurement and reporting framework in the privacy sandbox](./lab/BINOCULARS/README.md)
